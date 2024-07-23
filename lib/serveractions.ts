@@ -7,6 +7,7 @@ import {v2 as cloudinary} from "cloudinary";
 import { revalidatePath } from "next/cache";
 import connectDB from "./db";
 import { redirect } from "next/navigation";
+import { Types } from "mongoose";
 
 cloudinary.config({
     cloud_name:process.env.CLOUD_NAME,
@@ -33,6 +34,7 @@ export const sendSnapMessage = async (
             content : uploadResponse?.secure_url || content,
             messageType,
         });
+
         let chat = await Chat.findOne({
             participants:{$all:[senderId, receiverId]}
         }) 
@@ -42,7 +44,7 @@ export const sendSnapMessage = async (
                 messages:[newMessage._id],
             });
         }else{
-            chat.messages.push(newMessage._id);
+            chat.messages.push(new Types.ObjectId(newMessage._id));
             await chat.save();
         }
         revalidatePath(`/chat/${receiverId}`);
