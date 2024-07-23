@@ -1,5 +1,4 @@
 import React from 'react'
-import { MdOutlineCameraAlt } from "react-icons/md";
 import { Avatar, AvatarImage } from './ui/avatar';
 import { formatDate } from '@/lib/utils';
 import { MdCheckBoxOutlineBlank } from "react-icons/md";

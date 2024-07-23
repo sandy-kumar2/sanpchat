@@ -10,6 +10,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             clientSecret: process.env.NEXT_GITHUB_CLIENT_SECRET as string
         })
     ],
+    
     secret: process.env.AUTH_SECRET,
     callbacks: {
         async session({session}:{session:any}) {

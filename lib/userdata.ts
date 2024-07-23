@@ -52,6 +52,7 @@ export const getSidebarUsers = async (authUserId: string) => {
         throw error;
     }
 }
+
 export const getMessages = async (loggedInUserId:string, otherUserId:string ) => {
     try { 
          await connectDB();
