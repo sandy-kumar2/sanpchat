@@ -31,7 +31,7 @@ export const sendSnapMessage = async (
             senderId,
             receiverId,
             content : uploadResponse?.secure_url || content,
-            messageType
+            messageType,
         });
         let chat = await Chat.findOne({
             participants:{$all:[senderId, receiverId]}
