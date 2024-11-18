@@ -7,6 +7,7 @@ const SignupPage = () => {
     "use server"
     await signIn("github");
   }
+  
   return (
     <form action={signupHandler}>
       <Signup/>

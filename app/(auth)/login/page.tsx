@@ -7,6 +7,7 @@ const LoginPage = () => {
     "use server"
     await signIn("github");
   }
+  
   return (
     <form action={loginHandler}>
       <Login/>

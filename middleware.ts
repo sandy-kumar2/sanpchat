@@ -22,4 +22,5 @@ const authConfig = {
         }
     },
 };
+
 export default NextAuth(authConfig).auth;

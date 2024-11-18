@@ -32,6 +32,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 throw error;
             }
         },
+        
         async signIn({ account, profile }) {
             if (account?.provider === 'github') {
                 await connectDB();

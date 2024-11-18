@@ -8,11 +8,13 @@ export interface MessageInterface{
     messageType: 'text' | 'image',
     opened:boolean
 }
+
 export interface MessageDocument extends MessageInterface, Document{
     _id: Types.ObjectId;
     createdAt:Date,
     updatedAt:Date
 }
+
 const messageModel = new mongoose.Schema<MessageDocument>({
     senderId:{
         type:mongoose.Schema.Types.ObjectId,
@@ -36,4 +38,5 @@ const messageModel = new mongoose.Schema<MessageDocument>({
         default:false
     }
 }, {timestamps:true});
+
 export const Message : Model<MessageDocument> = mongoose.models?.Message || mongoose.model('Message', messageModel);

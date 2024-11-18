@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Button } from './ui/button';
 import { deleteChatMessages } from '@/lib/serveractions';
 import { useParams } from 'next/navigation';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useFormStatus } from 'react-dom';
 import { Loader2 } from 'lucide-react';
 
 const ChatHeader = ({ userProfile }: { userProfile: any }) => {
@@ -39,6 +39,7 @@ export default ChatHeader
 
 const SubmitButton = () => {
     const { pending } = useFormStatus();
+    
     return (
         <Button variant="destructive">
             {

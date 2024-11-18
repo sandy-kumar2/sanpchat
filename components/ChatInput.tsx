@@ -16,6 +16,7 @@ const ChatInput = () => {
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
+    
     try {
       await sendSnapMessage(
         inputText,

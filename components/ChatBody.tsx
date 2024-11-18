@@ -10,6 +10,7 @@ const ChatBody = ({ messages, authUser }: { messages: any, authUser: any }) => {
   useEffect(() => {
     scrollRef?.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
+
   return (
     <div className='flex-1 my-3 border-2 border-gray-300 overflow-y-auto p-2 rounded-lg'>
       {
@@ -20,6 +21,7 @@ const ChatBody = ({ messages, authUser }: { messages: any, authUser: any }) => {
           const senderFullName = message.senderId?.fullname.toUpperCase();
           const isMessageImage = message.messageType === 'image';
           const isPreviousMessageFromSameSender = index > 0 && messages[index - 1].senderId._id === message.senderId._id;
+          
           return (
             <div ref={scrollRef} key={message._id} className='w-full'>
               {

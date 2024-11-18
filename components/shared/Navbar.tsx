@@ -10,6 +10,7 @@ import { auth } from '@/auth';
 
 const Navbar = async () => {
     const authUser = await auth();
+    
     return (
         <div className='flex items-center justify-between w-screen px-10 py-4'>
             <div className='flex items-center gap-2'>
