@@ -25,9 +25,11 @@ export const sendSnapMessage = async (
         const authUser = await auth(); 
         const senderId = authUser?.user?._id;
         let uploadResponse;
+
         if(messageType === "image"){ 
             uploadResponse = await cloudinary.uploader.upload(content)
         }
+
         const newMessage : MessageDocument = await Message.create({
             senderId,
             receiverId,
@@ -38,6 +40,7 @@ export const sendSnapMessage = async (
         let chat = await Chat.findOne({
             participants:{$all:[senderId, receiverId]}
         }) 
+
         if(!chat){
             chat = await Chat.create({
                 participants:[senderId, receiverId],
@@ -61,11 +64,12 @@ export const deleteChatMessages = async (userId:string) => {
         await connectDB();
         const authUser = await auth();
         const user = authUser?.user;
-        if(!user) return ;
+        if(!user) return;
 
         const chat = await Chat.findOne({
             participants:{$all:[user._id, userId]}
         });
+        
         if(!chat) return;
 
         const messageIdsInString = chat.messages.map((id)=> id.toString());

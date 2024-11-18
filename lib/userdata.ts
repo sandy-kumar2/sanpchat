@@ -7,9 +7,11 @@ export const getUserProfile = async (userId:string) => {
     try {
         await connectDB();
         const user : UserDocument | null = await User.findOne({_id: userId});
+
         if(!user){
             return "User not found";
         }
+
         return user; 
     } catch (error) {
         console.log(error);
@@ -55,19 +57,19 @@ export const getSidebarUsers = async (authUserId: string) => {
 
 export const getMessages = async (loggedInUserId:string, otherUserId:string ) => {
     try { 
-         await connectDB();
-         const chatMessage = await Chat.findOne({
+        await connectDB();
+        const chatMessage = await Chat.findOne({
             participants:{$all:[loggedInUserId, otherUserId]}
-         }).populate({
+        }).populate({
             path:'messages',
             populate:{
                 path:'senderId',
                 model:'User',
                 select:'fullname'
             }
-         });
-         if(!chatMessage) return []; 
-         return JSON.parse(JSON.stringify(chatMessage.messages)) ;
+        });
+        if(!chatMessage) return []; 
+        return JSON.parse(JSON.stringify(chatMessage.messages));
     } catch (error) {
         console.log(error);
         throw error;

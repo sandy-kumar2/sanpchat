@@ -7,7 +7,6 @@ import {
   DialogHeader,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-
 import { Avatar, AvatarImage } from './ui/avatar';
 import { VscSend } from "react-icons/vsc";
 import { Loader2 } from 'lucide-react';
